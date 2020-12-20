@@ -18,6 +18,32 @@ public class Job {
         nextId++;
     }
 
+    @Override
+    public String toString() {
+        if (this.name == null
+                && (this.employer == null || this.employer.getValue() == "")
+                && (this.location == null || this.location.getValue() == "")
+                && (this.positionType == null || this.positionType.getValue() == "")
+                && (this.coreCompetency == null || this.coreCompetency.getValue() == "")
+        ){
+            return "OOPS! This job does not seem to exist.";
+        }
+
+        String noData = "Data not available";
+        String name = (this.name == null || this.name == "") ? noData : this.name;
+        String employer = (this.employer == null || this.employer.getValue() == "") ? noData : this.employer.getValue();
+        String location = (this.location == null || this.location.getValue() == "") ? noData : this.location.getValue();
+        String positionType = (this.positionType == null || this.positionType.getValue() == "") ? noData : this.positionType.getValue();
+        String coreCompetency = (this.coreCompetency == null || this.coreCompetency.getValue() == "") ? noData : this.coreCompetency.getValue();
+
+        return "ID: " + id + System.lineSeparator() +
+                "Name: " + name + System.lineSeparator() +
+                "Employer: " + employer + System.lineSeparator() +
+                "Location: " + location + System.lineSeparator() +
+                "Position Type: " + positionType + System.lineSeparator() +
+                "Core Competency: " + coreCompetency + System.lineSeparator();
+    }
+
     public Job(String name, Employer employer, Location location, PositionType positionType,
                CoreCompetency coreCompetency) {
         this();
